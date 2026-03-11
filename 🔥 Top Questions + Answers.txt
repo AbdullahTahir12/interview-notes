@@ -1,0 +1,135 @@
+🔥 Top Interview Questions + Answers (Async JS)
+1️⃣ What is a Promise?
+
+Answer:
+A Promise represents a value that may be available now, in the future, or never.
+It has three states:
+
+Pending
+Fulfilled
+Rejected
+
+2️⃣ What is async/await?
+
+Answer:
+Async/await is syntax to write Promise-based asynchronous code in a readable, synchronous-looking way.
+Internally, it uses Promises.
+
+3️⃣ Difference between Promise and async/await?
+
+Answer:
+Async/await is syntactic sugar over Promises.
+Promise → uses .then() and .catch() chaining
+async/await → uses await inside async functions with try/catch
+Async/await is more readable for sequential tasks.
+
+4️⃣ What is callback hell and how to avoid it?
+
+Answer:
+Callback hell happens when multiple asynchronous callbacks are nested inside each other, making code hard to read and maintain.
+
+Avoid it by:
+Using Promises
+Using async/await
+Using named functions
+
+5️⃣ What happens if you forget await?
+
+Answer:
+The code continues execution immediately.
+You get a Promise object instead of the resolved value.
+
+6️⃣ Why is await in a loop slow?
+
+Answer:
+Using await inside a loop executes tasks sequentially, waiting for each to finish before starting the next.
+
+For parallel execution, use:
+await Promise.all([fetchData(1), fetchData(2), fetchData(3)]);
+
+7️⃣ When should you use sequential vs parallel execution?
+
+Answer:
+Sequential: When tasks depend on each other
+(e.g., get user → then get posts)
+
+Parallel: When tasks are independent
+(e.g., multiple API calls)
+
+8️⃣ How to chain multiple Promises?
+getUser()
+.then(user => getPosts(user.id))
+.then(posts => getComments(posts[0].id))
+.then(comments => console.log(comments))
+.catch(err => console.log(err));
+
+9️⃣ Can a Promise change state after being resolved?
+
+Answer:
+No. Once a Promise is fulfilled or rejected, its state is immutable.
+
+🔟 Why does .then() run after synchronous code even if Promise resolves immediately?
+
+Answer:
+.then() callbacks go into the microtask queue, which runs after the current call stack is empty.
+This ensures predictable asynchronous behavior.
+
+1️⃣1️⃣ Explain the Event Loop in simple words
+
+Answer:
+JavaScript runs in a single thread.
+
+Order of execution:
+Synchronous code
+Microtasks (Promises)
+Macrotasks (setTimeout, setInterval)
+
+1️⃣2️⃣ Difference between Microtask and Macrotask
+
+Answer:
+
+Microtask: Promises, queueMicrotask()
+Macrotask: setTimeout, setInterval, I/O operations
+Microtasks run before macrotasks after the current stack clears.
+
+1️⃣3️⃣ What are Promise.all, Promise.race, and Promise.allSettled?
+
+Promise.all([p1, p2])
+Waits for all promises to resolve.
+Rejects if any one fails.
+
+Promise.race([p1, p2])
+Resolves/rejects as soon as the first promise settles.
+
+Promise.allSettled([p1, p2])
+Ye sab promises ka wait karta hai, chahe resolve ho ya reject.
+Result me har promise ka status hota hai: "fulfilled" (agar resolve hua) ya "rejected" (agar fail hua)
+
+1️⃣4️⃣ What is Controlled Concurrency?
+
+Answer:
+If you send too many async requests at once (API calls, DB queries), the system can overload.
+
+Solution:
+Limit how many run at one time
+Use a queue or Promise pool
+
+1️⃣5️⃣ Memory leaks with unresolved Promises
+
+Answer:
+If Promises never resolve or reject, memory can stay allocated.
+
+Solution:
+Always use .catch()
+Use .finally()
+Handle errors properly
+
+1️⃣6️⃣ Difference between Promise.resolve() and new Promise()
+
+Promise.resolve(value):
+Instantly returns a resolved Promise
+Cannot write custom async logic inside
+
+new Promise():
+Lets you define custom async logic
+You control when to call resolve() or reject()
