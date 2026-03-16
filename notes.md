@@ -348,3 +348,13 @@ Server ko har request ke liye poori information client se milni chahiye.
 Server apni taraf se client ki previous requests ya session store nahi karta.
 Iska fayda ye hai ke server simple, scalable aur reliable hota hai.
 Example: Agar user login hai, har request me token (jaise JWT) bhejna padta hai, server khud session ya login state store nahi karta.
+
+### Q46: If we have 10000 records to show in table how we optimnize this page speed ??
+
+Pagination
+Indexing
+Send only required field
+
+### Q47: Mongoose k middleware konse hn ??
+
+In Mongoose (Node.js ODM), middleware (also called hooks) wo functions hote hain jo schema methods ke chalne se pehle ya baad mein run hote hain. Inko mainly pre aur post hooks ke through use kiya jata hai.
