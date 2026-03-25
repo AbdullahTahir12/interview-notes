@@ -358,3 +358,12 @@ Send only required field
 ### Q47: Mongoose k middleware konse hn ??
 
 In Mongoose (Node.js ODM), middleware (also called hooks) wo functions hote hain jo schema methods ke chalne se pehle ya baad mein run hote hain. Inko mainly pre aur post hooks ke through use kiya jata hai.
+
+### Q48: Agr mre pas db se 10000 records aa rhy hn tou mn usko kse efficiently show krwao aur speed optimization kse axhi maintain kr skty ?
+
+Server-side pagination use karte hain (LIMIT/OFFSET), taake ek time pe sirf 50–100 records load hon
+Infinite scrolling ya pagination UI implement karte hain better UX ke liye
+Frontend virtualization (react-window) use karte hain taake sirf visible items render hon
+Database indexing apply karte hain taake queries fast ho jayein
+Server-side filtering/searching use karte hain instead of frontend filtering
+Aur caching (SWR / React Query) use karte hain taake unnecessary API calls avoid ho jayein
